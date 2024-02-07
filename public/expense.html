@@ -1,0 +1,143 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script
+      src="https://browser.sentry-cdn.com/7.64.0/bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <link rel="stylesheet" href="./styles/expense.css" defer />
+    <script src="./scripts/expense.js" defer></script>
+  </head>
+  <body>
+    <nav class="nav-bar">
+      <ul class="nav-items">
+        <li>
+          <h1><a href="/expense.html">Expense Tracker</a></h1>
+        </li>
+        <li><button type="button" id="buy-premium-btn">Buy Premium</button></li>
+        <li id="premiumMessage" style="display: none">
+          You are a premium user!
+        </li>
+      </ul>
+    </nav>
+    <div class="new-container">
+      <div class="container">
+        <form id="my-form">
+          <ul id="user-data">
+            <li>
+              <label for="expense-amount">Choose Expense Amount : </label>
+              <input type="number" name="amount" id="expense-amount" required />
+            </li>
+            <li>
+              <label for="expense-description">Expense Description :</label>
+              <textarea
+                type="text"
+                name="description"
+                id="expense-description"
+                required
+              ></textarea>
+            </li>
+            <li>
+              <label for="expense-category">Choose a Category:</label>
+              <select name="category" id="expense-category" required>
+                <option value="" style="display: none"></option>
+                <option value="Food">Food</option>
+                <option value="Movie">Movie</option>
+                <option value="Car">Car</option>
+                <option value="Outing">Outing</option>
+              </select>
+            </li>
+            <li>
+              <button type="submit">Add Expenses</button>
+              <button type="button" id="show-leaderboard">
+                Show Leaderboards
+              </button>
+            </li>
+          </ul>
+        </form>
+      </div>
+      <div class="expense-container">
+        <h3>Expenses</h3>
+        <select id="pageSizeSelect" class="page-size-dropdown">
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="15">15</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </select>
+        <ul id="user-list"></ul>
+        <div class="pagination">
+          <button id="prevExpensePage" disabled>Previous</button>
+          <span id="currentExpensePage">1</span>
+          <button id="nextExpensePage" disabled>Next</button>
+          <button id="lastExpensePageBtn" disabled>Last Page</button>
+          <!-- Displaying the last page number -->
+          <span id="lastExpensePageNum"></span>
+        </div>
+        <div id="reportModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Generate Expense Report</h2>
+
+            <form id="generateReportForm">
+              <label for="monthSelector">Select Month:</label>
+              <select id="monthSelector" name="month" required>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+
+              <label for="yearSelector">Select Year:</label>
+              <select id="yearSelector" name="year" required>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+              </select>
+
+              <label for="report-format">Select Format:</label>
+              <select id="report-format">
+                <option value="pdf">PDF</option>
+                <option value="xlsx">Excel</option>
+                <option value="csv">CSV</option>
+              </select>
+
+              <button id="generate-premium" type="submit">
+                Generate Report
+              </button>
+            </form>
+          </div>
+        </div>
+        <button type="button" id="generate-expense">
+          Generate Expense Report
+        </button>
+      </div>
+      <div class="leaderboard">
+        <div>
+          <h3>Leaderboard</h3>
+          <ul id="leaderboards" style="list-style: none"></ul>
+        </div>
+        <div class="pagination">
+          <button id="prevPage" disabled>Previous</button>
+          <span id="currentPage">1</span>
+          <button id="nextPage" disabled>Next</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

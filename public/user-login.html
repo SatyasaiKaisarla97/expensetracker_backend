@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login/Signup</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        width: 300px;
+        margin: auto;
+        padding: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 20px;
+      }
+
+      button {
+        width: 100%;
+        padding: 8px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      a {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form id="signup-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" required />
+
+        <button type="submit">Signup</button>
+        <p>Already a user? <a href="">Login</a></p>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("signup-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          let username = document.getElementById("username").value;
+          let email = document.getElementById("email").value;
+          let password = document.getElementById("password").value;
+
+          axios
+            .post("/user/signup", {
+              username: username,
+              email: email,
+              password: password,
+            })
+            .then(function (response) {
+              console.log(response);
+              alert("Signup successful!");
+            })
+            .catch(function (error) {
+              console.log(error);
+              alert("Signup failed!");
+            });
+        });
+    </script>
+  </body>
+</html>

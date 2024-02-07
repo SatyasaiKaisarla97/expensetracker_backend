@@ -1,0 +1,259 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.expense-container {
+  width: 65%;
+  height: 80vh;
+  margin: 10px 30px auto;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.new-container {
+  display: flex;
+}
+
+.nav-items {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-items li {
+  margin-top: 10px;
+  list-style: none;
+}
+
+.container,
+.leaderboard {
+  width: 30%;
+  height: 80vh;
+  margin: 10px 30px auto;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.leaderboard {
+  max-height: 80vh;
+  overflow-y: scroll;
+  display: none;
+}
+
+#user-data {
+  list-style: none;
+  padding: 0;
+}
+
+#user-data li {
+  margin-bottom: 10px;
+}
+
+#buy-premium-btn,
+#generate-expense {
+  margin: 20px;
+}
+
+#previouspage,
+#currentpage,
+#nextpage {
+  margin-bottom: 0;
+}
+.page-size-dropdown {
+  width: 60px;
+  margin: 0 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+textarea {
+  width: calc(100% - 16px);
+  height: 100px;
+}
+
+input[type="number"],
+input[type="text"],
+select {
+  width: calc(100% - 16px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  padding: 8px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  width: auto;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#user-list {
+  overflow-y: auto;
+  flex-grow: 1;
+  margin-top: 20px;
+}
+
+#leaderboards li {
+  font-style: italic;
+  background: #eee;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+#user-list li {
+  font-style: italic;
+  background: #eee;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+#user-list li div {
+  display: flex;
+  align-items: center;
+}
+
+#user-list button {
+  margin-left: 10px;
+  padding: 5px 10px;
+}
+
+#premiumMessage,
+h1 a,
+h3 {
+  font-style: italic;
+  color: #45a049;
+  margin: 30px 30px 0 0;
+  text-decoration: none;
+}
+
+h3 {
+  font-size: 2em;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 10px;
+  background-color: #fff;
+}
+
+.pagination button {
+  min-width: 100px;
+  margin: 0 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .pagination button {
+    min-width: 80px;
+  }
+}
+
+.leaderboard {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 60vh;
+}
+
+.leaderboard > div:first-child {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .leaderboard {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .expense-container,
+  .container,
+  .leaderboard {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .new-container,
+  .nav-items {
+    flex-direction: column;
+  }
+
+  .nav-items li {
+    margin-bottom: 10px;
+  }
+
+  textarea,
+  input[type="number"],
+  input[type="text"],
+  select {
+    width: calc(100% - 20px);
+  }
+}
